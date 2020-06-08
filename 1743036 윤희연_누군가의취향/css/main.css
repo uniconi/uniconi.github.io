@@ -1,0 +1,136 @@
+.star{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.box{
+    display: block;
+    position: absolute;
+    left: 0;
+    top:0;
+    overflow: scroll;
+    width: 100%;
+    height: 100%;   
+}
+
+.webtitle{background-color:rgba(0,0,0,0);
+    border: 0.5px solid white;
+    border-radius: 20px;
+    font-family: 'Song Myung', serif;
+    font-size: 23px;
+    color: ghostwhite;
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    }
+
+.main{display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Noto Serif KR', serif;
+    }
+
+.link:link{
+    color: white;
+    background-color: rgb(106, 53, 112, 0.6);
+    font-size: 25px;
+    font-family: 'Song Myung', serif;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px;}
+.link:hover{background-color:rgb(74, 30, 79, 0.6); color:rgb(204, 220, 221);}
+.link:visited{color:lightgray;}
+
+#now{background-color:rgb(95, 82, 132, 0.6);
+    color: rgb(204, 197, 224);}
+
+.content{
+    text-align: left;
+    padding:10px;
+    margin: 20px;
+    padding-top: 30px;
+    background-color: rgb(59, 48, 91, 0.6);
+}
+
+.left{
+    width: 20%;
+    display: inline-block;
+    position: relative;
+}
+
+.left img{
+    width: 100%;
+}
+
+.right{
+    width: 76%;
+    display: inline-block;
+    position: absolute;
+}
+
+li{font-weight: 700;
+    font-size: 20px;
+    color:lightgray;}
+
+p{text-indent: 20px; color:ghostwhite;}
+
+a{
+color:rgb(204, 197, 224);
+text-decoration: none;}
+
+.introduce{grid-column-start: 1; grid-column-end: 4;
+color:ghostwhite;font-family:'Noto Serif KR', serif;
+font-weight: 600;
+font-size: 22px;
+}
+
+#result{
+            display: inline-block;
+            width:30%;
+            position: relative;
+            right:-60px;
+            color:ghostwhite;
+            font-family: 'Song Myung', serif;
+            font-size: 30px;}
+
+
+.netflixcontent{
+    text-align: left;
+    padding:20px;
+    margin: 20px;
+    
+    background-color: rgb(59, 48, 91);
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.netflixcontent div{margin: 20px; margin-bottom: 15px;}
+.netflixcontent img{width:100%;
+    height: 240px;
+    padding: 0px 5px;}
+.netflixcontent p{text-indent: 20px;
+color: lightgray; font-family:'Noto Serif KR', serif;}
+span{text-indent: 20px;
+color:ghostwhite;font-family:'Noto Serif KR', serif;}
+
+
+
+.foodcontent{
+    text-align: left;
+    padding:20px;
+    margin: 20px;
+    
+    background-color: rgb(59, 48, 91);
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+.foodcontent div{margin: 20px; margin-bottom: 15px;}
+.foodcontent img{width:100%;
+    height: 270px;
+    padding: 0px 5px;}
+.foodcontent p{text-indent: 20px;
+color: lightgray; font-family:'Noto Serif KR', serif;}

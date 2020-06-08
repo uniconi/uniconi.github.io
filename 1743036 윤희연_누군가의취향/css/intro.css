@@ -1,0 +1,10 @@
+p{color : white; text-align: center;
+        font-size :40px;
+        font-family: 'Song Myung', serif; 
+        position : absolute;
+        top : 30%;}
+        
+.style1{ background: -webkit-linear-gradient(white,#7b528e,#4e657c);
+             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        position : absolute;
+        top: 50vh; left: 50vw;}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UNI's taste</title>
+    <meta charset="utf-8">
+    <link rel='stylesheet' type='text/css' href='css/star.css'>
+    <link rel='stylesheet' type='text/css' href='css/main.css'>
+     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Song+Myung&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+    <div class="star">
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
+    </div>
+    
+<div class="box">
+<div class="webtitle"><h1>누군가의 취향</h1><h3>Someone's taste</h3></div>  
+    
+<div class='main'>
+    <a href="main.html" class="link">About Me</a>
+    <a href="netflix.html" class="link" id="now">Netflix</a>
+    <a href="music.html" class="link">Music</a>
+    <a href="movie.html" class="link">Movie</a> 
+    <a href="food.html" class="link">Food</a>    
+</div>
+    
+    <div class="netflixcontent">
+   <div class="introduce">당신이 재밌게 봤던 콘텐츠를 선택해주세요!</div> 
+         <div>
+            <img src="netflix/sexeducation.jpeg">
+	       <input type="checkbox" value=1 id="check1">
+            <label for="check1"><span>오티스의 비밀 상담소 (Sex Education)</span></label>
+             </div>
+              <div>
+            <img src="netflix/reverse.jpg">
+            <input type="checkbox" value=4 id="check4">
+            <label for="check4"><span>거꾸로 가는 남자 (I am not an easy man)</span></label>
+            
+            </div>
+              <div>
+            <img src="netflix/good_place.jpeg">
+            <input type="checkbox" value=7 id="check7">
+            <label for="check7"><span>굿 플레이스(Good Place)</span></label>
+            </div>
+              <div>
+            <img src="netflix/stranger_things.jpg">
+            <input type="checkbox" value=10 id="check10">
+            <label for="check10"><span>기묘한 이야기(stranager things)</span></label>
+
+         </div>
+            
+        <div>
+            <img src="netflix/riverdale.jpg">
+            <input type="checkbox" value=2 id="check2">
+            <label for="check2"><span>리버데일 (Riverdale)</span></label>
+            </div>
+              <div>
+            <img src="netflix/santa.jpg">
+            <input type="checkbox" value=5 id="check5">
+            <label for="check5"><span>산타클라리타 다이어트(Santa Clarita Diet)</span></label>
+            </div>
+              <div>
+            <img src="netflix/anne.jpg">
+            <input type="checkbox" value=8 id="check8">
+            <label for="check8"><span>빨간 머리 앤(Anne With an "E")</span></label>
+            </div>
+              <div>
+            <img src="netflix/love.jpg">
+            <input type="checkbox" value=11 id="check11">
+            <label for="check11"><span>내가 사랑했던 모든 남자들에게 (To All The Boys I've Loved Before)</span></label>
+        </div>
+        <div>
+            <img src="netflix/Rucifer.jpg">
+            <input type="checkbox" value=3 id="check3">
+            <label for="check3"><span>루시퍼(Rucifer)</span></label>
+           </div>
+              <div> 
+            <img src="netflix/fucking_world.jpg">
+            <input type="checkbox" value=6 id="check6">
+            <label for="check6"><span>빌어먹을 세상따위 (The End of the F***ing World)</span></label>
+           </div>
+              <div> 
+            <img src="netflix/you1.jpg">
+            <input type="checkbox" value=9 id="check9">
+            <label for="check9"><span>너의 모든것 (YOU)</span></label>
+           </div>
+        <div> 
+            <img src="netflix/unbreakable.jpg">
+            <input type="checkbox" value=12 id="check12">
+            <label for="check12"><span>언브레이커블 키미슈미트 (Unbreakable Kimmy Schmidt)</span></label>
+        </div>
+        <div> 
+            <img src="netflix/umbrella.jpg">
+            <input type="checkbox" value=13 id="check13">
+            <label for="check13"><span>엄브렐러 아카데미 (The Umbrella Academy)</span></label>
+        </div>
+        <div> 
+            <img src="netflix/kingdum.jpg">
+            <input type="checkbox" value=14 id="check14">
+            <label for="check14"><span> 킹덤 (Kingdom)</span></label>
+        </div>
+        <div> 
+            <img src="netflix/birdbox.jpg">
+            <input type="checkbox" value=15 id="check15">
+            <label for="check15"><span>버드박스 (Birdbox)</span></label>
+        </div>
+    </div>
+    
+    <div class="result_box">
+            <button id="re">당신과 나의 취향 매칭률은?>></button>
+            <div id="result"></div>
+           <button id="go" style="visibility:hidden;" onclick="location.href='table/netflixtable.html'"> 내 인생작이 여기 없다니.. or  다른 누군가의 취향도 궁금하다면?>></button>
+    </div>
+</div>
+    
+<script>
+    var netflix_count =15;
+    
+    var r =document.getElementById("re");
+    r.addEventListener('click', function(){
+        var kkk = compare();
+        document.getElementById("result").innerHTML += "<h3>" +kkk+"%"+"</h3>";
+    })
+    
+    function compare(){
+        var flag = false;
+        var count=0;
+
+        for(var i=1; i<netflix_count+1;i++){
+            var name = 'check'+i;
+            var ch = document.getElementById(name);
+            if(ch.checked){
+                count++;
+            }
+        }
+        var result =(count / netflix_count)*100;
+        result=result.toFixed(2);
+        var go= document.getElementById("go");
+        go.style.visibility ="visible"; 
+        return result;
+    }
+</script>
+    
+    
+    
+    <style>
+        button{
+            display: inline-block;
+            width:14%;
+            position: relative;
+            right: -20px;
+            bottom : 0;  
+            text-align: center;
+            padding:10px;
+            color: ghostwhite;
+            font-size: 20px;
+            font-family: 'Song Myung', serif;
+            background-color: rgb(59, 48, 91);
+            border-radius: 12px;}
+        #go{width: 15%;}
+    </style>   
+
+
+</body> 
+</html>    

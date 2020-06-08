@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UNI's taste</title>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css?family=Song+Myung&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="css/star.css" >
+    <link rel="stylesheet" type="text/css" href="css/intro.css">
+</head>
+<body>
+
+    
+<div class="star">
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
+</div>
+
+    
+<p id="typing1"><p>
+<a href="main.html" class="style1">START >></a>
+    
+<style>
+    #typing1{position: relative; bottom: -200px;}
+</style>
+
+
+<script>
+var index=0;
+var xx=0;
+var txt1 = ["그 중에도 나와 취향이 잘 맞는 사람은 이야깃거리가 끊이지 않죠!",
+           "그렇다면, 당신과 나는 어떤 공통점이 있을까요?", "당신은 무엇을 좋아하나요?"];
+var speed =150;
+typeWriter();
+
+function typeWriter(){
+    if(index< txt1.length){
+        if(xx<txt1[index].length){
+        document.getElementById("typing1").innerHTML += txt1[index].charAt(xx);
+        //변수.charAt(인덱스)는 변수에서 해당 인덱스번호의 문자열을 반환
+        xx++;
+        if(xx==txt1[index].length){
+            document.getElementById("typing1").innerHTML += '<br>';
+            index++;
+            xx=0;
+        }
+        setTimeout(typeWriter,speed); 
+        //setTimeout(함수, 시간)은 해당시간 경과후 함수를 호출 
+        }
+    }
+}
+  
+</script>
+
+
+</body>
+</html>

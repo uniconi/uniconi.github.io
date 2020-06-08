@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UNI's taste</title>
+    <meta charset="utf-8">
+    <link rel='stylesheet' type='text/css' href='css/star.css'>
+    <link rel='stylesheet' type='text/css' href='css/main.css'>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Song+Myung&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+    <div class="star">
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
+    </div>
+    
+    <div class="box"> 
+<div class="webtitle"><h1>누군가의 취향</h1><h3>Someone's taste</h3></div>  
+    
+<div class='main'>
+    <a href="main.html" class="link" >About Me</a>
+    <a href="netflix.html" class="link">Netflix</a>
+    <a href="music.html" class="link">Music</a>
+    <a href="movie.html" class="link" id="now">Movie</a> 
+    <a href="food.html" class="link">Food</a>    
+
+</div>
+    <div class="netflixcontent">
+        <div class="introduce">당신이 재밌게 봤던 작품을 선택해주세요!</div> 
+         <div>
+            <img src="movie/mam.jpeg">
+	       <input type="checkbox" name="movie" value=1 id="check1">
+            <label for="check1"><span>맘마미아! (Mamma Mia!)</span></label>
+        </div>
+        <div>
+            <img src="movie/rp1.jpg">
+            <input type="checkbox" name="movie" value=5 id="check5">
+            <label for="check5"><span>레디플레이어 원 (Ready Player One)</span></label>
+        </div>
+        <div>
+            <img src="movie/500sum.jpg">
+            <input type="checkbox" name="movie" name="netflix" value=6 id="check6">
+            <label for="check6"><span>500일의 썸머 ((500) Days of Summer))</span></label>
+        </div>
+        <div> 
+            <img src="movie/call.jpeg">
+            <input type="checkbox" name="movie" value=4 id="check4">
+            <label for="check4"><span>콜 미 바이 유어 네임 (Call Me by Your Name)</span></label>
+        </div>
+        <div>  
+            <img src="movie/coco.jpg">
+            <input type="checkbox" name="movie" value=10 id="check10">
+            <label for="check10"><span>코코 (COCO)</span></label>
+        </div>
+        <div> 
+            <img src="movie/blue.jpg">
+            <input type="checkbox" name="movie" value=7 id="check7">
+            <label for="check7"><span>가장 따뜻한 색, 블루 (Blue Is the Warmest Color, La vie d'Adèle)</span></label>
+        </div>
+        <div>
+            <img src="movie/classic.jpg">
+            <input type="checkbox" name="movie" value=2 id="check2">
+            <label for="check2"><span>클래식 (The Classic)</span></label>
+        </div>
+        <div>   
+            <img src="movie/wall.png">
+            <input type="checkbox" name="movie" value=12 id="check12">
+            <label for="check12"><span>월 플라워(The Perks of Being a Wallflower)</span></label>
+        </div>
+           <div>
+            <img src="movie/danish.jpeg">
+            <input type="checkbox" name="movie" value=3 id="check3">
+            <label for="check3"><span>대니쉬 걸(The Danish Girl)</span></label>
+        </div>
+        <div>
+             <img src="movie/avengers.jpg">
+            <input type="checkbox" name="movie" value=13 id="check13">
+            <label for="check13"><span>어벤져스 시리즈 (The Avengers series)</span></label>
+
+         </div>
+        
+        <div>
+            <img src="movie/prada.jpeg">
+            <input type="checkbox" name="movie" value=8 id="check8">
+            <label for="check8"><span>악마는 프라다를 입는다 (The Devil Wears Prada)</span></label>
+        </div>
+        <div>
+            <img src="movie/res.jpg">
+            <input type="checkbox" name="movie" value=11 id="check11">
+            <label for="check11"><span>레미제라블 (Les Misérables)</span></label>
+        </div>
+        <div> 
+            <img src="movie/startrek.jpg">
+            <input type="checkbox" value=14 id="check14">
+            <label for="check14"><span>스타트렉 리부트 시리즈 (Star Trek reboot series)</span></label>
+        </div>
+        <div>  
+            <img src="movie/now.jpg">
+            <input type="checkbox" value=9 id="check9">
+            <label for="check9"><span>지금 만나러 갑니다 (いま、会いにゆきます, Be With You)</span></label>
+        </div>
+        <div>  
+            <img src="movie/water.jpeg">
+            <input type="checkbox" value=15 id="check15">
+            <label for="check15"><span>셰이프 오브 워터 (The Shape of Water)</span></label>
+        </div>
+        
+    </div>
+
+   <div class="result_box">
+            <button id="re">당신과 나의 취향 매칭률은?>></button>
+            <div id="result"></div>
+           <button id="go" style="visibility:hidden;" onclick="location.href='table/movietable.html'">  내 인생작이 여기 없다니.. or  다른 누군가의 취향도 궁금하다면?>></button>
+    </div>
+</div>
+    
+<script>
+    var netflix_count =15;
+    
+    var r =document.getElementById("re");
+    r.addEventListener('click', function(){
+        var kkk = compare();
+        document.getElementById("result").innerHTML += "<h3>" +kkk+"%"+"</h3>";
+    })
+    
+    function compare(){
+        var flag = false;
+        var count=0;
+
+        for(var i=1; i<netflix_count+1;i++){
+            var name = 'check'+i;
+            var ch = document.getElementById(name);
+            if(ch.checked){
+                count++;
+            }
+        }
+        var result =(count / netflix_count)*100;
+        result=result.toFixed(2);
+        var go= document.getElementById("go");
+        go.style.visibility ="visible"; 
+        return result;
+    }
+</script>
+    
+    
+    
+    <style>
+        button{
+            display: inline-block;
+            width:15%;
+            position: relative;
+            right: -20px;
+            bottom : 0;  
+            text-align: center;
+            padding:10px;
+            color: ghostwhite;
+            font-size: 20px;
+            font-family: 'Song Myung', serif;
+            background-color: rgb(59, 48, 91);
+            border-radius: 12px;}
+        #go{width: 19%;}
+    </style>   
+    
+</body> 
+</html>    
