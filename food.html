@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UNI's taste</title>
+    <meta charset="utf-8">
+    <link rel='stylesheet' type='text/css' href='css/star.css'>
+    <link rel='stylesheet' type='text/css' href='css/main.css'>
+     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Song+Myung&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+    
+<div class="star">
+    <div id='stars'></div>
+    <div id='stars2'></div>
+    <div id='stars3'></div>
+</div>
+
+
+<div class="box">
+    <div class="webtitle"><h1>누군가의 취향</h1><h3>Someone's taste</h3> </div>
+
+    <div class='main'>
+        <a href="main.html" class="link" >About Me</a>
+        <a href="netflix.html" class="link">Netflix</a>
+        <a href="music.html" class="link">Music</a>
+        <a href="movie.html" class="link">Movie</a> 
+        <a href="food.html" class="link" id="now">Food</a>    
+    </div>
+    
+    <div class="foodcontent"> 
+    
+        <div class="introduce" style="grid-column-start: 1; grid-column-end: 5;">당신이 좋아하는 음식/식당을 선택해주세요!</div> 
+        
+        <div>
+        <img src="Food/kkai.png">
+	       <input type="checkbox" value=1 id="check1">
+            <label for="check1"><span>까이식당</span><p>치킨라이스는 언제나 최고,,</p></label>
+        </div>
+        <div>
+            <img src="Food/hankki.JPG">
+	       <input type="checkbox" value=2 id="check2">
+            <label for="check2"><span> 한끼마끼</span><p>우동 + 살몬아보카도 조합이란..</p></label>
+        </div>
+        <div>
+            <img src="Food/dag.JPG">
+	       <input type="checkbox" value=3 id="check3">
+            <label for="check3"><span> 내찜닭</span><p>찜닭은 언제나 옳다.</p></label>
+        </div>
+        <div>
+            <img src="Food/yyup.JPG">
+	        <input type="checkbox" value=4 id="check4">
+            <label for="check4"><span> 동대문엽기떡볶이 (엽떡)</span><p>스트레스 받을 때 위장 찾아오시는 분</p></label>
+        </div>
+        <div>
+            <img src="Food/sunji.png">
+	        <input type="checkbox" value=5 id="check5">
+            <label for="check5"><span>선지국밥</span><p>어렸을 땐 싫어했는데 말이죠..</p></label>
+        </div>
+        <div>
+            <img src="Food/curryya.JPG">
+	        <input type="checkbox" value=6 id="check6">
+            <label for="check6"><span> 커리야 </span><p>식당분위기가 깔끔해서 더 좋았던!</p></label>
+        </div>
+        <div>
+            <img src="Food/banana.jpg">
+	        <input type="checkbox" value=7 id="check7">
+            <label for="check7"><span>생협 생바나나라떼 </span><p>(+) 아이스티노는 최고 존엄입니다.</p></label>
+        </div>
+        <div>
+            <img src="Food/pasta.JPG">
+	        <input type="checkbox" value=8 id="check8">
+            <label for="check8"><span>파스타부오노</span><p>3명이서 봉골레파스타 + 해물핫치즈리조또 + 닭가슴살크림파스타를 꼭 드셔보세요.</p></label>
+        </div>
+        <div>
+            <img src="Food/ppang.JPG">
+	        <input type="checkbox" value=9 id="check9">
+            <label for="check9"><span>빵사이에 낀 과일 (빵낀과)</span><p>종종 집밥이 생각날 때면 오곤 하는데요,, 혼밥보단 세트로 먹는 것이 이득인 듯?!</p></label>
+        </div>
+        <div>
+            <img src="Food/cupbab.JPG">
+	        <input type="checkbox" value=10 id="check10">
+            <label for="check10"><span>지니네 컵밥</span><p>가성비가 내려와~~~</p></label>
+        </div>
+        <div>
+            <img src="Food/waffle2.JPG">
+	        <input type="checkbox" value=11 id="check11">
+            <label for="check11"><span>와플잇업</span><p>겉은 바삭 적당히 존득한 그런 와플</p></label>
+        </div>
+        <div>
+            <img src="Food/yeona.JPG">
+	        <input type="checkbox" value=12 id="check12">
+            <label for="check12"><span>연어초밥</span><p>한강공원에서 연어초밥 + 닭강정은 최고입니다.</p></label>
+        </div>
+    </div>
+    <div class="result_box">
+            <button id="re">당신과 나의 취향 매칭률은?>></button>
+            <div id="result"></div>
+           <button id="go" style="visibility:hidden;" onclick="location.href='table/foodtable.html'">  내 인생맛집이 여기 없다니.. or 다른 누군가의 취향도 궁금하다면?>></button>
+    </div>
+</div>
+    
+<script>
+    var food_count =12;
+    
+    var r =document.getElementById("re");
+    r.addEventListener('click', function(){
+        var kkk = compare();
+        document.getElementById("result").innerHTML += "<h3>" +kkk+"%"+"</h3>";
+    })
+    
+    function compare(){
+        var flag = false;
+        var count=0;
+
+        for(var i=1; i<food_count+1;i++){
+            var name = 'check'+i;
+            var ch = document.getElementById(name);
+            if(ch.checked){
+                count++;
+            }
+        }
+        var result =(count / food_count)*100;
+        result=result.toFixed(2);
+        var go= document.getElementById("go");
+        go.style.visibility ="visible"; 
+        return result;
+    }
+</script>
+    
+    
+    
+    <style>
+        button{
+            display: inline-block;
+            width:15%;
+            position: relative;
+            right: -20px;
+            bottom : 0;  
+            text-align: center;
+            padding:10px;
+            color: ghostwhite;
+            font-size: 20px;
+            font-family: 'Song Myung', serif;
+            background-color: rgb(59, 48, 91);
+            border-radius: 12px;}
+        #go{width: 22%;}
+    </style>   
+
+</body> 
+</html>    

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' type='text/css' href='../css/star.css'>
+    <!-- <link rel='stylesheet' type='text/css' href='/CSS/main.css'>-->
+    <link rel='stylesheet' type='text/css' href='../css/table.css'>
+     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Song+Myung&display=swap" rel="stylesheet">
+    
+    <script>
+       
+        P={};
+        
+        function new_draw(){
+            document.getElementById("t1").innerHTML="";
+            document.getElementById("t1").insertAdjacentHTML("beforeend", "<tr><th>No.</th><th>Category</th><th>Matching percent</th><th>Name</th><th>Title</th><th>Genre</th><th>Short Comment</th></tr>");
+            for(var k in P){
+                if(P[k][0]=="movie"){
+                document.getElementById("t1").insertAdjacentHTML("beforeend","<tr><td>"+k+"</td><td>"+P[k][0]+"</td><td>"+P[k][1]+"</td><td>"+P[k][2]+"</td><td>"+P[k][3]+"</td><td>"+P[k][4]+"</td><td>"+P[k][5]+"</td></tr>");}
+            }
+        }
+        
+        function get_list(){
+            P = get_server();
+            new_draw();
+        }
+        
+        function add(){
+            var s = document.getElementById("percent").value;
+            var n = document.getElementById("name").value;
+            var t = document.getElementById("title1").value;
+            var g = document.getElementById("genre").value;
+            var c = document.getElementById("comment").value;
+            var r = document.getElementById("category").value;
+            
+            P = get_server("add/"+r+"/"+s+"/"+n+"/"+t+"/"+g+"/"+c);
+            new_draw();
+        }
+        
+        function del(){
+            var no = document.getElementById("num").value;
+            P = get_server("del/"+no);
+            new_draw();
+        }
+        
+        var url = "http://203.255.186.215:9018/";
+        
+        function get_server(param=""){
+            http = new XMLHttpRequest();
+            
+            http.open("GET",url+param,false);
+            http.send();
+            return JSON.parse(http.responseText);
+        }
+        
+         function search(){
+            var f = Number(document.getElementById("find").value);
+            document.getElementById("t1").innerHTML="";
+            document.getElementById("t1").insertAdjacentHTML("beforeend", "<tr><th>No.</th><th>Category</th><th>Matching percent</th><th>Name</th><th>Title</th><th>Genre</th><th>Short Comment</th></tr>");
+             console.log(f);
+            for(k in P){
+                if(P[k][0]=="movie" && (f -10)  <= Number(P[k][1]) && (f +10)  >= Number(P[k][1]) ){
+                    console.log(Number(P[k][0]));
+                    document.getElementById("t1").insertAdjacentHTML("beforeend","<tr><td>"+k+"</td><td>"+P[k][0]+"</td><td>"+P[k][1]+"</td><td>"+P[k][2]+"</td><td>"+P[k][3]+"</td><td>"+P[k][4]+"</td><td>"+P[k][5]+"</td></tr>");}
+            }
+        }
+        
+    </script>
+</head>
+    
+<body onload = "get_list();">
+    <div class="star">
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
+    </div>
+    
+    <div class="webtitle"><h1>누군가의 영화 추천</h1><h3>당신의 인생작이 선택지에 없는게 아쉽다면?</h3></div>
+
+<div class='main'>
+    <a href="netflixtable.html" class="link">Netflix</a>
+    <a href="musictable.html" class="link">Music</a>
+    <a href="movietable.html" class="link" id="now">Movie</a> 
+    <a href="foodtable.html" class="link">Food</a>  
+    <a href="../main.html" class="link">Back to main</a>
+</div>
+    
+    <div class="content">
+        <p style="font-weight: 700; color:rgb(204, 197, 224);">[나의 추천작 입력하기]</p>
+        Category : <input id="category" type="text" value="movie">
+        Your Matching Percent : <input id="percent" type="text" placeholder="취향 퍼센트의 숫자만 입력"> <br><Br>
+        Your Name : <input id="name" type="text">
+        Title(제목) : <input id="title1" type="text">
+
+        Genre(장르) : <input id="genre" type="text" placeholder="로맨스, 액션, 스릴러 etc">
+        <br><br>
+        Short Comment : <textarea id="comment" row=1 cols = 73 placeholder=" 추천하는 이유, 좋아하는 이유 등.. 다른 누군가를 영업해보시죠 &#128515;"></textarea>
+        <button onclick="add();">ADD</button>
+        <br><br>
+        Wanna Delete? : <input id="num" type="number" placeholder="지우고싶은 행의 숫자 입력"> <button onclick="del();">DEL</button><br><br><br>
+        
+        <p style="font-weight: 700; color:rgb(204, 197, 224);">[나와 비슷한 누군가의 취향 보기]</p>Matching Percent : <input id="find" type="text" placeholder="취향 퍼센트의 숫자만 입력">  
+        <button onclick="search();">filtering search</button><br><br><br>
+    
+    </div>
+  
+    <table class="t1" id="t1">
+        <tr><th>No.</th><th>Matching percent</th><th>Name</th><th>Title</th><th>Genre</th><th>Short Comment</th></tr>
+    </table>
+    
+</body>
+</html>
